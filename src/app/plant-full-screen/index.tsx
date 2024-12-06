@@ -1,12 +1,11 @@
 import RoundStatus from "@/src/components/RoundStatus";
-import { HomeGrid, PlantFullScreenGrid } from "@/src/constants/LayoutGrid";
+import { PlantFullScreenGrid } from "@/src/constants/LayoutGrid";
 import { Texts } from "@/src/constants/Texts";
 import { Image, Text, View, StyleSheet } from "react-native";
-import { Colors } from "react-native/Libraries/NewAppScreen";
 
 export default function PlantFullScreen() {
     return (
-        <View>
+        <View style={{ flex: 1 }}>
             <Image
                 style={styles.image}
                 source={require("@/assets/images/plant.png")}

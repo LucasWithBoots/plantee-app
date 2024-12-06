@@ -1,11 +1,4 @@
-import {
-    Text,
-    View,
-    StyleSheet,
-    Image,
-    ScrollView,
-    TouchableOpacity,
-} from "react-native";
+import { Text, View, StyleSheet, Image, TouchableOpacity } from "react-native";
 import { Colors } from "../constants/Colors";
 import { Texts } from "../constants/Texts";
 import BadgePlantCard from "./BadgePlantCard";

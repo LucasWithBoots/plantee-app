@@ -1,7 +1,7 @@
 import { useFonts } from "expo-font";
 import { SplashScreen, Stack } from "expo-router";
 import { useEffect } from "react";
-import { StatusBar, View } from "react-native";
+import { StatusBar } from "react-native";
 import BottomBar from "../components/BottomBar";
 
 SplashScreen.preventAutoHideAsync();
@@ -36,9 +36,7 @@ export default function RootLayout() {
                     contentStyle: { backgroundColor: "#1A281F" },
                     headerShown: false,
                 }}
-            >
-                <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-            </Stack>
+            />
         </>
     );
 }
