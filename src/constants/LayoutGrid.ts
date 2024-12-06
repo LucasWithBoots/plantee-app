@@ -7,3 +7,10 @@ export const HomeGrid = StyleSheet.create({
         marginTop: 70,
     },
 });
+
+export const PlantFullScreenGrid = StyleSheet.create({
+    container: {
+        marginHorizontal: 20,
+        marginTop: 20,
+    },
+});
