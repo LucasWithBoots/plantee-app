@@ -2,10 +2,13 @@ import { StyleSheet, TouchableOpacity, View } from "react-native";
 import { Colors } from "../constants/Colors";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import { router } from "expo-router";
-import { useState } from "react";
+import { useSegments } from "expo-router";
+import { useEffect, useState } from "react";
 
 export default function BottomBar() {
     const [activePage, setActivePage] = useState("home");
+    const segment = useSegments();
+
     const navigateTo = (page: string) => {
         setActivePage(page);
 
@@ -17,6 +20,14 @@ export default function BottomBar() {
             router.push("./");
         }
     };
+
+    useEffect(() => {
+        if (segment[0] == "add-plant") {
+            setActivePage("leaf");
+        } else {
+            setActivePage("home");
+        }
+    }, [segment]);
 
     return (
         <View
