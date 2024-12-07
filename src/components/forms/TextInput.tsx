@@ -1,5 +1,5 @@
 import { Colors } from "@/src/constants/Colors";
-import { Text, TextInput, View } from "react-native";
+import { KeyboardTypeOptions, Text, TextInput, View } from "react-native";
 
 interface ModelInputText {
     title: string;
@@ -7,6 +7,7 @@ interface ModelInputText {
     placeholder: string;
     onChangeText: (text: string) => void;
     isSecure: boolean;
+    keyboard?: KeyboardTypeOptions;
 }
 
 export default function TextInputForms({
@@ -15,6 +16,7 @@ export default function TextInputForms({
     placeholder,
     onChangeText,
     isSecure = false,
+    keyboard = "default",
 }: ModelInputText) {
     return (
         <View className="gap-2.5">
@@ -35,6 +37,7 @@ export default function TextInputForms({
                     backgroundColor: Colors.caper,
                     marginTop: 10,
                 }}
+                keyboardType={keyboard}
             />
         </View>
     );

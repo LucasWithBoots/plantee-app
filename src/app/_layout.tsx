@@ -3,6 +3,7 @@ import { SplashScreen, Stack } from "expo-router";
 import { useEffect } from "react";
 import { StatusBar } from "react-native";
 import BottomBar from "../components/BottomBar";
+import React from "react";
 
 SplashScreen.preventAutoHideAsync();
 

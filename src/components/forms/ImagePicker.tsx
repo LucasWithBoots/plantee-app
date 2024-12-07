@@ -4,7 +4,11 @@ import * as ImagePicker from "expo-image-picker";
 import { Text } from "react-native";
 import { Colors } from "@/src/constants/Colors";
 
-export default function ImagePickerForm() {
+export default function ImagePickerForm({
+    onImageSelect,
+}: {
+    onImageSelect: (imageUri: string) => void;
+}) {
     const [image, setImage] = useState<string | null>(null);
 
     const pickImage = async () => {
@@ -19,7 +23,9 @@ export default function ImagePickerForm() {
         console.log(result);
 
         if (!result.canceled) {
-            setImage(result.assets[0].uri);
+            const uri = result.assets[0].uri;
+            setImage(uri);
+            onImageSelect(uri);
         }
     };
 

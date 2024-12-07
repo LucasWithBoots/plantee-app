@@ -3,8 +3,9 @@ import { Colors } from "../constants/Colors";
 import { Texts } from "../constants/Texts";
 import BadgePlantCard from "./BadgePlantCard";
 import { Link } from "expo-router";
+import { PlantNoID } from "@/src/types/Plant";
 
-export default function PlantCard() {
+export default function PlantCard({ name, location, water, image }: PlantNoID) {
     return (
         <Link asChild href={"/plant-full-screen"}>
             <TouchableOpacity style={styles.container}>
@@ -20,7 +21,7 @@ export default function PlantCard() {
                     }}
                 >
                     <View>
-                        <Text style={Texts.h2}>My Plant</Text>
+                        <Text style={Texts.h2}>{name}</Text>
                         <View
                             style={{
                                 flexDirection: "row",
