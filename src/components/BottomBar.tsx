@@ -1,8 +1,23 @@
-import { Image, StyleSheet, Text, View } from "react-native";
+import { StyleSheet, TouchableOpacity, View } from "react-native";
 import { Colors } from "../constants/Colors";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
+import { router } from "expo-router";
+import { useState } from "react";
 
 export default function BottomBar() {
+    const [activePage, setActivePage] = useState("home");
+    const navigateTo = (page: string) => {
+        setActivePage(page);
+
+        if (page === "home") {
+            router.push("./");
+        } else if (page === "leaf") {
+            router.push("./add-plant");
+        } else if (page === "plus") {
+            router.push("./");
+        }
+    };
+
     return (
         <View
             style={{
@@ -20,9 +35,51 @@ export default function BottomBar() {
                 overflow: "hidden",
             }}
         >
-            <FontAwesome size={28} name="home" color={Colors.ocean_blue} />
-            <FontAwesome size={28} name="leaf" color={Colors.skin} />
-            <FontAwesome size={28} name="plus" color={Colors.skin} />
+            <TouchableOpacity
+                onPress={() => navigateTo("home")}
+                style={styles.icon}
+            >
+                <FontAwesome
+                    size={28}
+                    name="home"
+                    color={
+                        activePage === "home" ? Colors.ocean_blue : Colors.skin
+                    }
+                />
+            </TouchableOpacity>
+            <TouchableOpacity
+                onPress={() => navigateTo("leaf")}
+                style={styles.icon}
+            >
+                <FontAwesome
+                    size={28}
+                    name="leaf"
+                    color={
+                        activePage === "leaf" ? Colors.ocean_blue : Colors.skin
+                    }
+                />
+            </TouchableOpacity>
+            <TouchableOpacity
+                onPress={() => navigateTo("plus")}
+                style={styles.icon}
+            >
+                <FontAwesome
+                    size={28}
+                    name="plus"
+                    color={
+                        activePage === "plus" ? Colors.ocean_blue : Colors.skin
+                    }
+                />
+            </TouchableOpacity>
         </View>
     );
 }
+
+const styles = StyleSheet.create({
+    icon: {
+        height: "100%",
+        width: "33%",
+        alignItems: "center",
+        justifyContent: "center",
+    },
+});
