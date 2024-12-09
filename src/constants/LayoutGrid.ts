@@ -10,7 +10,7 @@ export const HomeGrid = StyleSheet.create({
 
 export const PlantFullScreenGrid = StyleSheet.create({
     container: {
-        marginHorizontal: 20,
-        marginTop: 20,
+        paddingHorizontal: 20,
+        paddingTop: 20,
     },
 });

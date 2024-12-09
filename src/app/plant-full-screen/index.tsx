@@ -27,17 +27,35 @@ export default function PlantFullScreen() {
         await removePlantById(id.toString());
         router.push({
             pathname: "/",
-            params: { reload: "true" }, // Passa um parâmetro para forçar o reload
+            params: { reload: "true" },
         });
     };
 
     return (
         <View style={{ flex: 1 }}>
             <Image style={styles.image} source={{ uri: plant?.image }} />
-            <View style={PlantFullScreenGrid.container}>
-                <Text style={[Texts.h1, { marginBottom: 6 }]}>
-                    {plant?.name}
-                </Text>
+            <View style={[PlantFullScreenGrid.container]}>
+                <View
+                    style={{
+                        flexDirection: "row",
+                        alignItems: "center",
+                        marginRight: 1,
+                        gap: 20,
+                    }}
+                >
+                    <Text style={[Texts.h1, { marginBottom: 6 }]}>
+                        {plant?.name}
+                    </Text>
+                    <TouchableOpacity
+                        onPress={() => deleteHandler(plant?.id!!)}
+                    >
+                        <FontAwesome
+                            size={28}
+                            name="trash"
+                            color={Colors.skin}
+                        />
+                    </TouchableOpacity>
+                </View>
                 <View
                     style={{
                         flexDirection: "row",
@@ -57,9 +75,6 @@ export default function PlantFullScreen() {
                 <View style={{ marginTop: 40 }}>
                     <RoundStatus />
                 </View>
-                <TouchableOpacity onPress={() => deleteHandler(plant?.id!!)}>
-                    <FontAwesome size={28} name="trash" color={Colors.skin} />
-                </TouchableOpacity>
             </View>
         </View>
     );

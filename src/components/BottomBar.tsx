@@ -1,4 +1,4 @@
-import { StyleSheet, TouchableOpacity, View } from "react-native";
+import { StyleSheet, TouchableOpacity, View, Image } from "react-native";
 import { Colors } from "../constants/Colors";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import { router } from "expo-router";
@@ -16,7 +16,7 @@ export default function BottomBar() {
             router.push("./");
         } else if (page === "leaf") {
             router.push("./add-plant");
-        } else if (page === "plus") {
+        } else if (page === "water") {
             router.push("./");
         }
     };
@@ -54,7 +54,7 @@ export default function BottomBar() {
                     size={28}
                     name="home"
                     color={
-                        activePage === "home" ? Colors.ocean_blue : Colors.skin
+                        activePage === "home" ? Colors.dark_green : Colors.skin
                     }
                 />
             </TouchableOpacity>
@@ -62,25 +62,33 @@ export default function BottomBar() {
                 onPress={() => navigateTo("leaf")}
                 style={styles.icon}
             >
-                <FontAwesome
-                    size={28}
-                    name="leaf"
-                    color={
-                        activePage === "leaf" ? Colors.ocean_blue : Colors.skin
-                    }
-                />
+                {activePage === "leaf" ? (
+                    <Image
+                        source={require("@/assets/images/icons/leaf_notselected.png")}
+                        style={{ width: 28, height: 28 }}
+                    />
+                ) : (
+                    <Image
+                        source={require("@/assets/images/icons/leaf_selected.png")}
+                        style={{ width: 28, height: 28 }}
+                    />
+                )}
             </TouchableOpacity>
             <TouchableOpacity
-                onPress={() => navigateTo("plus")}
+                onPress={() => navigateTo("water")}
                 style={styles.icon}
             >
-                <FontAwesome
-                    size={28}
-                    name="plus"
-                    color={
-                        activePage === "plus" ? Colors.ocean_blue : Colors.skin
-                    }
-                />
+                {activePage === "water" ? (
+                    <Image
+                        source={require("@/assets/images/icons/water_notselected.png")}
+                        style={{ width: 28, height: 28 }}
+                    />
+                ) : (
+                    <Image
+                        source={require("@/assets/images/icons/water_selected.png")}
+                        style={{ width: 28, height: 28 }}
+                    />
+                )}
             </TouchableOpacity>
         </View>
     );

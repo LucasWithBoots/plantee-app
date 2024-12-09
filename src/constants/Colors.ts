@@ -7,5 +7,5 @@ export const Colors = {
     skin: "#F9F3CC",
     dark_green: "#1A281F",
     jungle: "##799C60",
-    ocean_blue: "##307D70",
+    ocean_blue: "#307D70",
 };
