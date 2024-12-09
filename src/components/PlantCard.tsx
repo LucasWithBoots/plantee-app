@@ -3,7 +3,7 @@ import { Colors } from "../constants/Colors";
 import { Texts } from "../constants/Texts";
 import BadgePlantCard from "./BadgePlantCard";
 import { Link } from "expo-router";
-import { Plant, PlantNoID } from "@/src/types/Plant";
+import { Plant } from "@/src/types/Plant";
 
 export default function PlantCard({ id, name, location, water, image }: Plant) {
     return (

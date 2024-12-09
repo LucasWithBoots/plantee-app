@@ -22,7 +22,7 @@ export default function BottomBar() {
     };
 
     useEffect(() => {
-        if (segment[0] == "add-plant") {
+        if (segment[0] === "add-plant") {
             setActivePage("leaf");
         } else {
             setActivePage("home");

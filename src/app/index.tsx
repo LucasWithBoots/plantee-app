@@ -4,7 +4,6 @@ import { Texts } from "../constants/Texts";
 import PlantCard from "../components/PlantCard";
 import { useEffect, useState } from "react";
 import { getPlants } from "@/src/actions/GetPlants";
-import * as SecureStore from "expo-secure-store";
 import { Plant } from "@/src/types/Plant";
 
 export default function Index() {
