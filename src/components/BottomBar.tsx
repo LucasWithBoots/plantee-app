@@ -17,13 +17,15 @@ export default function BottomBar() {
         } else if (page === "leaf") {
             router.push("./add-plant");
         } else if (page === "water") {
-            router.push("./");
+            router.push("./water-plant");
         }
     };
 
     useEffect(() => {
         if (segment[0] === "add-plant") {
             setActivePage("leaf");
+        } else if (segment[0] === "water-plant") {
+            setActivePage("water");
         } else {
             setActivePage("home");
         }
