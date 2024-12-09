@@ -26,7 +26,9 @@ export default function PlantCard({ id, name, location, water, image }: Plant) {
                     }}
                 >
                     <View>
-                        <Text style={Texts.h2}>{name}</Text>
+                        <Text style={[Texts.h2, { maxWidth: 180 }]}>
+                            {name}
+                        </Text>
                         <View
                             style={{
                                 flexDirection: "row",
@@ -60,7 +62,7 @@ const styles = StyleSheet.create({
     },
     image: {
         height: 160,
-        width: 140,
+        width: "40%",
         borderBottomLeftRadius: 7,
         borderTopLeftRadius: 7,
     },

@@ -1,11 +1,14 @@
+import { removePlantById } from "@/src/actions/DeletePlant";
 import { getPlantById } from "@/src/actions/GetPlantById";
 import RoundStatus from "@/src/components/RoundStatus";
+import { Colors } from "@/src/constants/Colors";
 import { PlantFullScreenGrid } from "@/src/constants/LayoutGrid";
 import { Texts } from "@/src/constants/Texts";
 import { Plant } from "@/src/types/Plant";
-import { useLocalSearchParams } from "expo-router";
+import FontAwesome from "@expo/vector-icons/FontAwesome";
+import { router, useLocalSearchParams } from "expo-router";
 import { useEffect, useState } from "react";
-import { Image, Text, View, StyleSheet } from "react-native";
+import { Image, Text, View, StyleSheet, TouchableOpacity } from "react-native";
 
 export default function PlantFullScreen() {
     const { id } = useLocalSearchParams();
@@ -19,6 +22,14 @@ export default function PlantFullScreen() {
 
         getPlant();
     });
+
+    const deleteHandler = async (id: number) => {
+        await removePlantById(id.toString());
+        router.push({
+            pathname: "/",
+            params: { reload: "true" }, // Passa um parâmetro para forçar o reload
+        });
+    };
 
     return (
         <View style={{ flex: 1 }}>
@@ -46,6 +57,9 @@ export default function PlantFullScreen() {
                 <View style={{ marginTop: 40 }}>
                     <RoundStatus />
                 </View>
+                <TouchableOpacity onPress={() => deleteHandler(plant?.id!!)}>
+                    <FontAwesome size={28} name="trash" color={Colors.skin} />
+                </TouchableOpacity>
             </View>
         </View>
     );

@@ -5,21 +5,23 @@ import PlantCard from "../components/PlantCard";
 import { useEffect, useState } from "react";
 import { getPlants } from "@/src/actions/GetPlants";
 import { Plant } from "@/src/types/Plant";
+import { useLocalSearchParams } from "expo-router";
 
 export default function Index() {
     const [plants, setPlants] = useState<Plant[]>();
+    const params = useLocalSearchParams();
+
+    const loadPlants = async () => {
+        const storedPlants = await getPlants();
+        const parsedPlants: Plant[] = storedPlants
+            ? JSON.parse(storedPlants)
+            : [];
+        setPlants(parsedPlants);
+    };
 
     useEffect(() => {
-        const loadPlants = async () => {
-            const storedPlants = await getPlants();
-            const parsedPlants: Plant[] = storedPlants
-                ? JSON.parse(storedPlants)
-                : [];
-            setPlants(parsedPlants);
-        };
-
         loadPlants();
-    }, []);
+    }, [params.reload]);
 
     return (
         <View style={HomeGrid.container}>

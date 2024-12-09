@@ -6,6 +6,7 @@ import { useState } from "react";
 import { View, Text } from "react-native";
 import ConfirmButton from "@/src/components/forms/ConfirmButton";
 import { addPlant } from "@/src/actions/AddPlant";
+import { router } from "expo-router";
 
 export default function AddPlant() {
     const [name, setName] = useState<string>("");
@@ -14,7 +15,16 @@ export default function AddPlant() {
     const [image, setImage] = useState<string>("");
 
     const submitPlant = async () => {
-        await addPlant({ name, location, water, image });
+        try {
+            await addPlant({ name, location, water, image });
+            setName("");
+            setLocation("");
+            setWater("");
+            setImage("");
+            router.push("/");
+        } catch (e) {
+            throw e;
+        }
     };
 
     return (
