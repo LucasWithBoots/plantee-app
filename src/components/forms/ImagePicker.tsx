@@ -20,8 +20,6 @@ export default function ImagePickerForm({
             quality: 1,
         });
 
-        console.log(result);
-
         if (!result.canceled) {
             const uri = result.assets[0].uri;
             setImage(uri);

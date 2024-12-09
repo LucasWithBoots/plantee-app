@@ -17,7 +17,6 @@ export default function Index() {
                 ? JSON.parse(storedPlants)
                 : [];
             setPlants(parsedPlants);
-            console.log(plants);
         };
 
         loadPlants();
@@ -26,12 +25,20 @@ export default function Index() {
     return (
         <View style={HomeGrid.container}>
             <Text style={Texts.h1}>Your plants</Text>
-            {/*<FlatList*/}
-            {/*    data={plants}*/}
-            {/*    renderItem={(plants) => {*/}
-            {/*        <PlantCard name={plants.name} />;*/}
-            {/*    }}*/}
-            {/*/>*/}
+            <FlatList
+                keyExtractor={(item) => item.id.toString()}
+                data={plants}
+                renderItem={({ item }) => (
+                    <PlantCard
+                        id={item.id}
+                        name={item.name}
+                        location={item.location}
+                        water={""}
+                        image={item.image}
+                    />
+                )}
+                ItemSeparatorComponent={() => <View style={{ height: 10 }} />}
+            />
         </View>
     );
 }

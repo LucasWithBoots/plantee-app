@@ -16,6 +16,4 @@ export const addPlant = async ({ name, location, water, image }: PlantNoID) => {
     plants.push(newPlant);
 
     await SecureStore.setItemAsync("plants", JSON.stringify(plants));
-
-    console.log(await SecureStore.getItemAsync("plants"));
 };

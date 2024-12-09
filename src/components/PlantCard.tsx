@@ -3,16 +3,21 @@ import { Colors } from "../constants/Colors";
 import { Texts } from "../constants/Texts";
 import BadgePlantCard from "./BadgePlantCard";
 import { Link } from "expo-router";
-import { PlantNoID } from "@/src/types/Plant";
+import { Plant, PlantNoID } from "@/src/types/Plant";
 
-export default function PlantCard({ name, location, water, image }: PlantNoID) {
+export default function PlantCard({ id, name, location, water, image }: Plant) {
     return (
-        <Link asChild href={"/plant-full-screen"}>
+        <Link
+            asChild
+            href={{
+                pathname: "/plant-full-screen",
+                params: {
+                    id: id,
+                },
+            }}
+        >
             <TouchableOpacity style={styles.container}>
-                <Image
-                    style={styles.image}
-                    source={require("@/assets/images/plant.png")}
-                />
+                <Image style={styles.image} source={{ uri: image }} />
                 <View
                     style={{
                         flexDirection: "column",
@@ -36,7 +41,7 @@ export default function PlantCard({ name, location, water, image }: PlantNoID) {
                                     marginRight: 6,
                                 }}
                             />
-                            <Text style={styles.location}>Bedroom</Text>
+                            <Text style={styles.location}>{location}</Text>
                         </View>
                     </View>
                     <BadgePlantCard />
